@@ -14,6 +14,7 @@ repositories {
 val junit = "5.11.0"
 val lombok = "1.18.34"
 val jetbrainsAnnotations = "24.1.0"
+val bigMath = "2.3.2"
 
 dependencies {
     testImplementation(platform("org.junit:junit-bom:${junit}"))
@@ -28,6 +29,8 @@ dependencies {
     testCompileOnly("org.jetbrains:annotations:${jetbrainsAnnotations}")
     annotationProcessor("org.jetbrains:annotations:${jetbrainsAnnotations}")
     testAnnotationProcessor("org.jetbrains:annotations:${jetbrainsAnnotations}")
+
+    implementation("ch.obermuhlner:big-math:${bigMath}")
 }
 
 tasks {

@@ -12,22 +12,22 @@ public record Interest(@NonNull Instant start, @NonNull Instant end, @NonNull Bi
 
     public @NonNull BigDecimal apply(@NonNull Instant start, @NonNull Instant end, @NonNull BigDecimal amount) {
         if (start.isAfter(end))
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(start + " is after " + end);
 
         Instant realEnd = this.end.isAfter(end) ? end : this.end;
         Duration duration = Duration.between(start, realEnd);
-        long difference = switch (timeUnit) {
+        double difference = switch (timeUnit) {
             case MILLIS -> duration.toMillis();
             case SECONDS -> duration.toSeconds();
             case MINUTES -> duration.toMinutes();
             case HOURS -> duration.toHours();
             case DAYS -> duration.toDays();
-            case WEEKS -> duration.toDays() / 7;
-            case MONTHS -> duration.toDays() / 30;
-            case YEARS -> duration.toDays() / 365;
+            case WEEKS -> duration.toDays() / 7.0;
+            case MONTHS -> duration.toDays() / 30.0;
+            case YEARS -> duration.toDays() / 365.0;
             default -> throw new IllegalArgumentException();
         };
 
-        return amount.multiply(rate.add(BigDecimal.ONE).pow((int) difference)).subtract(amount).round(MathContext.DECIMAL32);
+        return amount.multiply(BigDecimalMath.pow(rate.add(BigDecimal.ONE), BigDecimal.valueOf(difference), MathContext.DECIMAL128));
     }
 }

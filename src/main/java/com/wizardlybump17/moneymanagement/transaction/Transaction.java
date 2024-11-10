@@ -1,4 +1,4 @@
-package com.wizardlybump17.moneymanagement;
+package com.wizardlybump17.moneymanagement.transaction;
 
 import com.wizardlybump17.moneymanagement.account.Account;
 import org.jetbrains.annotations.NotNull;

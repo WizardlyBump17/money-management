@@ -7,10 +7,11 @@ import java.math.BigDecimal;
 import java.time.Instant;
 
 /**
+ * @param id the id of this transaction
  * @param from the {@link Account#id()} of the {@link Account} that is sending the money
  * @param to the {@link Account#id()} of the {@link Account} that is receiving the money
  * @param amount the amount of money of this transaction
  * @param when when this transaction happened
  */
-public record Transaction(int from, int to, @NotNull BigDecimal amount, @NotNull Instant when) {
+public record Transaction(int id, int from, int to, @NotNull BigDecimal amount, @NotNull Instant when) {
 }

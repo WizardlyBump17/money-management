@@ -1,6 +1,7 @@
 package com.wizardlybump17.moneymanagement;
 
-import lombok.NonNull;
+import ch.obermuhlner.math.big.BigDecimalMath;
+import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
@@ -8,9 +9,9 @@ import java.time.Duration;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 
-public record Interest(@NonNull Instant start, @NonNull Instant end, @NonNull BigDecimal rate, @NonNull ChronoUnit timeUnit) {
+public record Interest(@NotNull Instant start, @NotNull Instant end, @NotNull BigDecimal rate, @NotNull ChronoUnit timeUnit) {
 
-    public @NonNull BigDecimal apply(@NonNull Instant start, @NonNull Instant end, @NonNull BigDecimal amount) {
+    public @NotNull BigDecimal apply(@NotNull Instant start, @NotNull Instant end, @NotNull BigDecimal amount) {
         if (start.isAfter(end))
             throw new IllegalArgumentException(start + " is after " + end);
 

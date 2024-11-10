@@ -1,7 +1,7 @@
 package com.wizardlybump17.moneymanagement.test;
 
 import com.wizardlybump17.moneymanagement.Interest;
-import lombok.NonNull;
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -109,7 +109,7 @@ class InterestTests {
         Assertions.assertEquals(0, BigDecimal.valueOf(33.1).compareTo(three.apply(three.start(), three.end(), BigDecimal.valueOf(100))));
     }
 
-    static @NonNull Interest getInterest(long time, @NonNull BigDecimal rate, @NonNull ChronoUnit timeUnit) {
+    static @NotNull Interest getInterest(long time, @NotNull BigDecimal rate, @NotNull ChronoUnit timeUnit) {
         Instant start = Instant.from(ZonedDateTime.of(LocalDate.of(2024, Month.JANUARY, 1).atStartOfDay(), ZoneId.systemDefault()));
         Instant end = switch (timeUnit) {
             case WEEKS -> start.plus(time * 7, ChronoUnit.DAYS);

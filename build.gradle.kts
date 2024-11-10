@@ -20,11 +20,6 @@ dependencies {
     testImplementation(platform("org.junit:junit-bom:${junit}"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 
-    compileOnly("org.projectlombok:lombok:${lombok}")
-    testCompileOnly("org.projectlombok:lombok:${lombok}")
-    annotationProcessor("org.projectlombok:lombok:${lombok}")
-    testAnnotationProcessor("org.projectlombok:lombok:${lombok}")
-
     compileOnly("org.jetbrains:annotations:${jetbrainsAnnotations}")
     testCompileOnly("org.jetbrains:annotations:${jetbrainsAnnotations}")
     annotationProcessor("org.jetbrains:annotations:${jetbrainsAnnotations}")

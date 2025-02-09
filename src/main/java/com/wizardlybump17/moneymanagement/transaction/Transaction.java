@@ -5,6 +5,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.util.UUID;
 
 /**
  * @param id the id of this transaction
@@ -13,5 +14,5 @@ import java.time.Instant;
  * @param amount the amount of money of this transaction
  * @param when when this transaction happened
  */
-public record Transaction(int id, int from, int to, @NotNull BigDecimal amount, @NotNull Instant when) {
+public record Transaction(@NotNull UUID id, @NotNull UUID from, @NotNull UUID to, @NotNull BigDecimal amount, @NotNull Instant when) {
 }

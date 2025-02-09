@@ -1,4 +1,8 @@
 package com.wizardlybump17.moneymanagement.account;
 
-public record Account(int id, int clientId) {
+import org.jetbrains.annotations.NotNull;
+
+import java.util.UUID;
+
+public record Account(@NotNull UUID id, @NotNull UUID clientId) {
 }

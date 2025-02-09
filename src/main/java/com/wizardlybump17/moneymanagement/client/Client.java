@@ -3,18 +3,19 @@ package com.wizardlybump17.moneymanagement.client;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
+import java.util.UUID;
 
 public class Client {
 
-    private final int id;
+    private final @NotNull UUID id;
     private @NotNull String name;
 
-    public Client(int id, @NotNull String name) {
+    public Client(@NotNull UUID id, @NotNull String name) {
         this.id = id;
         this.name = name;
     }
 
-    public int getId() {
+    public @NotNull UUID getId() {
         return id;
     }
 
@@ -33,7 +34,7 @@ public class Client {
         if (o == null || getClass() != o.getClass())
             return false;
         Client client = (Client) o;
-        return id == client.id && Objects.equals(name, client.name);
+        return Objects.equals(id, client.id) && Objects.equals(name, client.name);
     }
 
     @Override

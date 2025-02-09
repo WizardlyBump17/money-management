@@ -110,7 +110,7 @@ class InterestTests {
     }
 
     static @NotNull Interest getInterest(long time, @NotNull BigDecimal rate, @NotNull ChronoUnit timeUnit) {
-        Instant start = Instant.from(ZonedDateTime.of(LocalDate.of(2024, Month.JANUARY, 1).atStartOfDay(), ZoneId.systemDefault()));
+        Instant start = Instant.from(ZonedDateTime.of(LocalDate.of(2024, Month.JANUARY, 1).atStartOfDay(), ZoneOffset.UTC));
         Instant end = switch (timeUnit) {
             case WEEKS -> start.plus(time * 7, ChronoUnit.DAYS);
             case MONTHS -> start.plus(time * 30, ChronoUnit.DAYS);

@@ -2,10 +2,18 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 plugins {
     id("java")
+    id("com.palantir.git-version") version "3.1.0"
 }
 
+apply(plugin = "java")
+apply(plugin = "com.palantir.git-version")
+
+val gitVersion: groovy.lang.Closure<String> by extra
+
+println(properties["version"])
+
 group = "com.wizardlybump17.money-management"
-version = "0.1.0"
+version = "${properties["version"]}-${gitVersion()}"
 
 repositories {
     mavenCentral()

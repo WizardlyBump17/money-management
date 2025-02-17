@@ -3,6 +3,7 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent
 plugins {
     id("java")
     id("com.palantir.git-version") version "3.1.0"
+    id("maven-publish")
 }
 
 apply(plugin = "java")
@@ -51,5 +52,23 @@ tasks {
 
     java {
         withSourcesJar()
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            url = uri("https://maven.pkg.github.com/WizardlyBump17/money-management")
+            credentials {
+                username = (project.findProperty("gpr.user") ?: System.getenv("USERNAME")) as String
+                password = (project.findProperty("gpr.key") ?: System.getenv("TOKEN")) as String
+            }
+        }
+    }
+
+    publications {
+        create<MavenPublication>("github-packages") {
+            from(components["java"])
+        }
     }
 }

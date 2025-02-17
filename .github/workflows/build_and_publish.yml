@@ -3,6 +3,10 @@ name: Build and Publish
 on:
   push:
   pull_request:
+  release:
+    types:
+      - created
+      - published
 
 env:
   USERNAME: ${{ secrets.GITHUB_TOKEN }}

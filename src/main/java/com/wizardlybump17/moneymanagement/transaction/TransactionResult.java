@@ -1,8 +1,6 @@
 package com.wizardlybump17.moneymanagement.transaction;
 
-public enum TransactionResult {
+import org.jetbrains.annotations.Nullable;
 
-    SUCCESS,
-    GENERIC_FAILURE,
-    NOT_ENOUGH_FUNDS
+public record TransactionResult(boolean success, @Nullable String error) {
 }
